@@ -1,17 +1,19 @@
-document.getElementById("btnEntrar").addEventListener("click", fazerLogin);
+const form = document.getElementById('loginForm');
+const errorMsg = document.getElementById('error-message');
 
-function fazerLogin(){
-  const usuario = document.getElementById("usuario").value.trim();
-  const senha = document.getElementById("senha").value;
+// usuário e senha de teste
+const usuarioCorreto = "admin";
+const senhaCorreta = "1234";
 
-  const usuarioCorreto = "admin";
-  const senhaCorreta = "1234";
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // evita recarregar a página
 
-  const mensagem = document.getElementById("mensagem");
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
 
-  if(usuario === usuarioCorreto && senha === senhaCorreta){
-    window.location.href = "home.html";
-  } else {
-    mensagem.textContent = "Usuário ou senha incorretos!";
-  }
-}
+    if (user === usuarioCorreto && pass === senhaCorreta) {
+        window.location.href = "home.html"; // vai para outra tela
+    } else {
+        errorMsg.textContent = "Usuário ou senha incorretos!";
+    }
+});
